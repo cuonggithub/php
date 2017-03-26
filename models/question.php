@@ -22,12 +22,13 @@
 		public static function all(){
 			$list = [];
 			$conn = Connection::getInstance();
-			$request = $conn->query("SELECT * FROM question ");
-			
-			while ($row = mysqli_fetch_assoc($request)){
-				$list[] = new Question($row["id"], $row["name"], $row["email"], $row["gender"], $row["title"], $row["content"]);
+			$result = $conn->query("SELECT * FROM question ");
+			if($result){
+				while ($row = mysqli_fetch_assoc($result)){
+					$list[] = new Question($row["id"], $row["name"], $row["email"], $row["gender"], $row["title"], $row["content"]);
+				}
 			}
-			
+			$conn->close();
 			return $list;
 		}
 		
@@ -37,18 +38,36 @@
 			
 			$sql = "Insert into question (name, email, gender, title, content)
 					values ($name, $email, $gender, $title, $content)";
-			
+			$id = "";
 			if($conn->query($sql) === True){
-				echo "New record created successfully";
+				$id = $conn->insert_id;
 			}else{
 				echo "Error:" . $conn->error;
 			}
+			$conn->close();
+			
+			return $id;
+		}
+		
+		public static function detail($id){
+			
+			$conn = Connection::getInstance();
+			$result = $conn->query("SELECT * FROM question WHERE id = $id");
+			
+			if($result){
+				$question = $result->fetch_object();
+			}else{
+				$question = new Question();
+			}
+			
+			$conn->close();
+			
+			return $question;
 		}
 		
 		public function __destruct(){
 			
 		}
-		
 	}
 	
 	
