@@ -1,6 +1,7 @@
 
 <html>
 	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=utf8">
 		<style>
 			.wrap{
 				width:100%;
@@ -38,7 +39,6 @@
 			}
 			
 		</style>
-		<META http-equiv="Content-Type" contentType="text/html; charset=EUC-JP" >
 	<head>
 	
 	<body>
@@ -57,5 +57,3 @@
 		</div>
 	</body>
 </html>
-
-
