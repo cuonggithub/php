@@ -20,13 +20,16 @@
 		}
 		
 		public static function all(){
-			$list = [];
+			$list = array();
 			$conn = Connection::getInstance();
 			$result = $conn->query("SELECT * FROM question ");
 			if($result){
 				while ($row = mysqli_fetch_assoc($result)){
 					$list[] = new Question($row["id"], $row["name"], $row["email"], $row["gender"], $row["title"], $row["content"]);
 				}
+			}else{
+				echo "Error:" . $conn->error;
+				exit;
 			}
 			$conn->close();
 			return $list;
@@ -36,13 +39,23 @@
 			
 			$conn = Connection::getInstance();
 			
-			$sql = "Insert into question (name, email, gender, title, content)
-					values ($name, $email, $gender, $title, $content)";
+			$name = '\'' . $name .'\'';
+			$email = '\'' . $email .'\'';
+			$gender = '\'' . $gender .'\'';
+			$title = '\'' . $title .'\'';
+			$content = '\'' . $content .'\'';
+			
+			$sql = "INSERT IGNORE INTO question (name, email, gender, title, content)
+					VALUES ($name, $email, $gender, $title, $content)";
+			
+			echo $sql;
+			
 			$id = "";
 			if($conn->query($sql) === True){
 				$id = $conn->insert_id;
 			}else{
 				echo "Error:" . $conn->error;
+				exit;
 			}
 			$conn->close();
 			
@@ -58,6 +71,8 @@
 				$question = $result->fetch_object();
 			}else{
 				$question = new Question();
+				echo "Error:" . $conn->error;
+				exit;
 			}
 			
 			$conn->close();
