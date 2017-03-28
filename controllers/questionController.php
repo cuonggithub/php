@@ -1,4 +1,6 @@
 <?php
+	require_once('models/question.php');
+	
 	class QuestionController{
 		
 		public function index(){
@@ -7,7 +9,7 @@
 			require_once('views/question/index.php');
 		}
 		
-		public function new(){
+		public function newQ(){
 			
 			$name = $email = $gender = $title = $content = "";
 			$nameError = $emailError = $genderError = $titleError = $contentError = "";
@@ -53,7 +55,7 @@
 			
 			$id = Question::insert($name, $email, $gender, $title, $content);
 			
-			// header("Location: ./index.php?controller=question&action=detail&id=$id", true);
+			header("Location: ./index.php?controller=question&action=detail&id=$id", true);
 		}
 		
 		public static function detail(){
