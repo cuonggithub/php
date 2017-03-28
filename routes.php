@@ -1,5 +1,6 @@
 <?php 
-	$controllers = array('question' => ['index', 'new', 'detail', 'delete']);
+	
+	$controllers = array("question" => array("index","newQ","detail","delete"));
 	
 	if(array_key_exists($controller, $controllers)){
 		if(in_array($action, $controllers[$controller])){
@@ -12,7 +13,6 @@
 		
 		switch($controller){
 			case 'question' : 
-				require_once('models/question.php');
 				$controller = new questionController();
 		}
 		
