@@ -45,9 +45,17 @@
 			$title = '\'' . $title .'\'';
 			$content = '\'' . $content .'\'';
 			
+<<<<<<< HEAD
 			$sql = "INSERT INTO question (name, email, gender, title, content)
 					VALUES ($name, $email, $gender, $title, $content)";
 			
+=======
+			$sql = "INSERT IGNORE INTO question (name, email, gender, title, content)
+					VALUES ($name, $email, $gender, $title, $content)";
+			
+			echo $sql;
+			
+>>>>>>> origin/master
 			$id = "";
 			if($conn->query($sql) === True){
 				$id = $conn->insert_id;

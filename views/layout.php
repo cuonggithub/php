@@ -2,9 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html;charset=utf8">
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="resource/css/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="resource/css/dhtmlxcalendar.css">
 		<link rel="stylesheet" type="text/css" href="resource/css/fonts/font_roboto/roboto.css"/>
+=======
+>>>>>>> origin/master
 		<style>
 			.wrap{
 				width:100%;
