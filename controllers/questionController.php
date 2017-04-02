@@ -1,4 +1,6 @@
 <?php
+	require_once('models/question.php');
+	
 	class QuestionController{
 		
 		public function index(){
@@ -7,7 +9,7 @@
 			require_once('views/question/index.php');
 		}
 		
-		public function new(){
+		public function newQ(){
 			
 			$name = $email = $gender = $title = $content = "";
 			$nameError = $emailError = $genderError = $titleError = $contentError = "";
@@ -37,7 +39,8 @@
 			if(empty($email)){
 				$emailError = "必須";
 				$isError = true;
-			}else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			}
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				$emailError = "正しくないメールアドレスです";
 			}
 			
@@ -53,7 +56,7 @@
 			
 			$id = Question::insert($name, $email, $gender, $title, $content);
 			
-			// header("Location: ./index.php?controller=question&action=detail&id=$id", true);
+			header("Location: ./index.php?controller=question&action=detail&id=$id", true);
 		}
 		
 		public static function detail(){

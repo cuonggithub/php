@@ -4,7 +4,7 @@
 
 <a href="./index.php?controller=question&action=index">問題一覧</a>
 
-	<form action="./index.php?controller=question&action=new" method="post">
+	<form action="./index.php?controller=question&action=newQ" method="post">
 		<br />
 		<table class="tbNew">
 			<tr>

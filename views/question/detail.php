@@ -2,7 +2,7 @@
 <div>
 	<a href="./index.php?controller=question&action=index">問題一覧</a>
 	&nbsp;&nbsp;
-	<a href="./index.php?controller=question&action=new">新規問題</a>
+	<a href="./index.php?controller=question&action=newQ">新規問題</a>
 	<table class="list">
 		<tr>
 			<th>No.</th>
